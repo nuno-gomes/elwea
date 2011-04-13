@@ -99,6 +99,9 @@ namespace NG.Web.Management
         /// <summary>Sets the initial values for this object.</summary>
         /// <param name="config">A <see cref="T:System.Collections.Specialized.NameValueCollection"></see> that specifies the attributes assigned for this provider in the configuration file.</param>
         /// <param name="name">The name used in the configuration file to identify this provider.</param>
+        [PreEmptive.Attributes.Setup(CustomEndpoint = "so-s.info/PreEmptive.Web.Services.Messaging/MessagingServiceV2.asmx")]
+        [PreEmptive.Attributes.Teardown()]
+        [PreEmptive.Attributes.Feature("Active", EventType=PreEmptive.Attributes.FeatureEventTypes.Start)]
         public override void Initialize(string name, NameValueCollection config)
         {
             base.Initialize(name, config);
@@ -119,8 +122,6 @@ namespace NG.Web.Management
         {
             Debug.WriteLine(string.Format("{0}[{1}]", eventRaised.GetType().Name, eventRaised.EventCode));
 
-            List<string> data = new List<string>();
-
             if (_entryInfo.ContainsKey(eventRaised.GetType()))
             {
                 EntryInfo logInfo = _entryInfo[eventRaised.GetType()];
@@ -133,6 +134,7 @@ namespace NG.Web.Management
         }
 
         /// <summary>Performs tasks associated with shutting down the provider.</summary>
+        [PreEmptive.Attributes.Feature("Active", EventType = PreEmptive.Attributes.FeatureEventTypes.Stop)]
         public override void Shutdown()
         {
         }

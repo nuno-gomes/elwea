@@ -34,3 +34,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: PreEmptive.Attributes.Business("3E35F098-CE43-4F82-9E9D-05C8B1046A45")]
+[assembly: PreEmptive.Attributes.Application("84A711D2-456D-455C-B507-FA26E3A9454D")]
+
